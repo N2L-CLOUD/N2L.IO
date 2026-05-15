@@ -231,10 +231,8 @@
     }
 .sub-projects-section { padding-top: var(--space-6) !important; }
     .sub-projects-section .section-eyebrow {
-      font-size: var(--text-xl);
-      letter-spacing: 0.15em;
-      margin-bottom: var(--space-10);
-    text-align:center;width:100%;}
+      margin-bottom: var(--space-8);
+    }
 .section, .mission-section { position: relative; }
 .section::before, .mission-section::before, .section::after, .mission-section::after {
     content: "";

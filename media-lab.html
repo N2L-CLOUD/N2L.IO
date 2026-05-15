@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Media Lab — brighter hero pulse (50% more than homepage 0.25→0.85) */
+    .sub-hero .hero-bg img {
+      animation: media-breathe 5s ease-in-out infinite !important;
+    }
+    @keyframes media-breathe {
+      0%, 100% { opacity: 0.38; }
+      50%       { opacity: 1.0; }
+    }
+    /* Magenta glow on sub-page card hover */
+    .sub-page-card:hover {
+      border-color: rgba(194,59,255,0.55) !important;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.7), 0 0 32px rgba(194,59,255,0.45), 0 0 64px rgba(194,59,255,0.15);
+    }
+    /* Holographic auto-float animation */
+    .sub-page-grid { perspective: 1400px; }
+    .sub-page-card {
+      transform-style: preserve-3d;
+      animation: card-float 8s ease-in-out infinite, card-glow 3s ease-in-out infinite;
+    }
+    .sub-page-card:nth-child(2) { animation-delay: -4s, -1.5s; }
+    .sub-page-card:hover { animation-play-state: paused; }
+    @keyframes card-float {
+      0%   { transform: translateY(0px)   rotateY(-6deg) rotateX(3deg);  }
+      25%  { transform: translateY(-16px) rotateY(3deg)  rotateX(-2deg); }
+      50%  { transform: translateY(-8px)  rotateY(7deg)  rotateX(3deg);  }
+      75%  { transform: translateY(-18px) rotateY(-1deg) rotateX(-2deg); }
+      100% { transform: translateY(0px)   rotateY(-6deg) rotateX(3deg);  }
+    }
+    @keyframes card-glow {
+      0%, 100% { box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 12px rgba(194,59,255,0.15), 0 0 28px rgba(194,59,255,0.05); }
+      50%       { box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 30px rgba(194,59,255,0.55), 0 0 60px rgba(194,59,255,0.2); }
+    }
+    /* Magenta stats bar overrides */
+    .stats-grid-magenta{border-color:rgba(194,59,255,0.18)!important;box-shadow:0 8px 32px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.05)!important}
+    .stats-grid-magenta .stat-item:not(:last-child)::after{background:rgba(194,59,255,0.18)!important}
+    .stat-magenta{background:linear-gradient(135deg,#C23BFF 0%,#FF79C6 100%)!important;-webkit-background-clip:text!important;-webkit-text-fill-color:transparent!important;background-clip:text!important}
+  </style>
 </head>
 <body>
   <nav class="site-nav nav-magenta" id="site-nav">
@@ -30,13 +68,33 @@
       <div class="hero-bg">
         <img src="./Upscaled Website Images/Hero Images/enhanced_N2L_Media_Lab_hero_image.png" alt="Media Lab Hero">
       </div>
+      <div class="stats-bar" id="stats" style="position:absolute;top:158px;left:50%;transform:translateX(-50%);z-index:10;width:fit-content;">
+        <div class="stats-grid stats-grid-magenta">
+          <div class="stat-item">
+            <span class="stat-number stat-magenta" data-target="2" data-static="true">0</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number stat-magenta" data-target="2" data-static="true">0</span>
+            <span class="stat-label">Live</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number stat-magenta" data-target="0" data-static="true">0</span>
+            <span class="stat-label">Pending</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number stat-magenta" data-target="2400">0</span>
+            <span class="stat-label">Signals / Mo</span>
+          </div>
+        </div>
+      </div>
       <div class="hero-content">
-        <h1 class="hero-headline">Broadcasting <br><span class="accent" style="color:var(--color-magenta);background:none;-webkit-text-fill-color:var(--color-magenta);">Intelligence</span></h1>
-        <p class="hero-tagline">AI-driven editorial and automated data systems.</p>
+        <h1 class="hero-headline">Delivering <br><span class="accent" style="color:var(--color-magenta);background:none;-webkit-text-fill-color:var(--color-magenta);">Intelligence</span></h1>
+        <p class="hero-tagline">On the technologies, companies, and breakthroughs driving the Fourth Industrial Revolution.</p>
       </div>
     </section>
     <section class="section sub-projects-section" id="projects">
-      <div class="section-eyebrow" style="text-align:center;width:100%;color:var(--color-magenta);">PROJECTS</div>
+      <div class="section-eyebrow" style="color:var(--color-magenta);border-color:rgba(194,59,255,0.3);background:rgba(194,59,255,0.08);">Projects</div>
       <div class="project-grid sub-page-grid">
         <a href="https://tekbeacon.org" target="_blank" target="_blank" class="project-card sub-page-card">
           <div class="project-image">
@@ -44,7 +102,8 @@
           </div>
           <div class="project-info">
             <h3 class="project-title">TekBeacon.org</h3>
-            <p class="project-desc">Broadcasting intelligence with AI-driven editorial and automated data systems.</p>
+            <p class="project-desc">Media intelligence platform that maps the technologies, companies, and breakthroughs shaping the Fourth Industrial Revolution.</p>
+            <div class="live-status" style="align-self:center;">● LIVE</div>
           </div>
         </a>
         <a href="mism.html" class="project-card sub-page-card">
@@ -53,7 +112,8 @@
           </div>
           <div class="project-info">
             <h3 class="project-title">MisM Music Catalog</h3>
-            <p class="project-desc">Agentic music discovery and cataloging platform powered by deep learning.</p>
+            <p class="project-desc">Media Lab project that converts modern classical and orchestral works into numerical data and runs them through mathematical functions to uncover new structures and patterns.</p>
+            <div class="live-status" style="align-self:center;">● LIVE</div>
           </div>
         </a>
       </div>
@@ -66,6 +126,66 @@
       if (window.scrollY > 50) { nav.classList.add('scrolled'); } 
       else { nav.classList.remove('scrolled'); }
     });
+
+    // Stats bar counters — fire on load (bar is always visible at top)
+    (function() {
+      function animateOnce(el, target) {
+        if (target === 0) { el.textContent = '0'; return; }
+        var start = null, dur = 1600;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target).toLocaleString();
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(step);
+      }
+      function animateLoop(el, target) {
+        var start = null, dur = 2200;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          el.textContent = Math.floor((1 - Math.pow(1 - p, 3)) * target).toLocaleString();
+          if (p < 1) { requestAnimationFrame(step); }
+          else { el.textContent = target.toLocaleString(); setTimeout(function() { start = null; requestAnimationFrame(step); }, 2000); }
+        }
+        requestAnimationFrame(step);
+      }
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var statsEl = document.getElementById('stats');
+          if (!statsEl) return;
+          statsEl.querySelectorAll('.stat-number').forEach(function(el) {
+            el.dataset.static === 'true' ? animateOnce(el, +el.dataset.target) : animateLoop(el, +el.dataset.target);
+          });
+        }, 400);
+      });
+    })();
+
+    // Eyebrow pill — click to center section
+    document.querySelectorAll('.section-eyebrow, .hero-eyebrow').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        var section = pill.closest('section') || pill.closest('[id]');
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        else window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Gradient glow cursor trail
+    (function() {
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+      var orb = document.createElement('div');
+      orb.style.cssText = 'position:fixed;top:0;left:0;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle,rgba(194,59,255,0.55) 0%,rgba(79,209,255,0.25) 60%,transparent 100%);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);filter:blur(4px);transition:opacity 0.3s ease;opacity:0';
+      document.body.appendChild(orb);
+      var mouseX=0,mouseY=0,orbX=0,orbY=0,visible=false;
+      document.addEventListener('mousemove',function(e){mouseX=e.clientX;mouseY=e.clientY;if(!visible){orb.style.opacity='1';visible=true;}spawnDot(e.clientX,e.clientY);});
+      document.addEventListener('mouseleave',function(){orb.style.opacity='0';visible=false;});
+      function lerp(a,b,t){return a+(b-a)*t;}
+      (function animateOrb(){orbX=lerp(orbX,mouseX,0.1);orbY=lerp(orbY,mouseY,0.1);orb.style.left=orbX+'px';orb.style.top=orbY+'px';requestAnimationFrame(animateOrb);})();
+      var lastDot=0;
+      function spawnDot(x,y){var now=Date.now();if(now-lastDot<30)return;lastDot=now;var d=document.createElement('div');d.style.cssText='position:fixed;pointer-events:none;z-index:9998;border-radius:50%;width:10px;height:10px;transform:translate(-50%,-50%) scale(1);background:radial-gradient(circle,rgba(194,59,255,0.7) 0%,rgba(79,209,255,0.4) 100%);filter:blur(2px);left:'+x+'px;top:'+y+'px;transition:opacity 0.6s ease,transform 0.6s ease;opacity:0.8';document.body.appendChild(d);requestAnimationFrame(function(){d.style.opacity='0';d.style.transform='translate(-50%,-50%) scale(0.3)';});setTimeout(function(){d.remove();},650);}
+    })();
 
     // Intersection Observer for scroll fade-ins
     const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
@@ -86,30 +206,7 @@
       observer.observe(section);
     });
 
-    // Dynamic 3D Tilt Effect for Sub-Page Cards
-    document.querySelectorAll('.sub-page-card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -6; // max 6 deg
-        const rotateY = ((x - centerX) / centerX) * 6;  // max 6 deg
-        
-        card.style.transform = `perspective(1000px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        card.style.transition = 'transform 0.1s linear, box-shadow 0.1s linear';
-        card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.7)';
-        card.style.zIndex = '10';
-      });
-      
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0)';
-        card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-        card.style.boxShadow = 'var(--shadow-md)';
-        card.style.zIndex = '1';
-      });
-    });
+    // (3D float handled by CSS animation — see <style> block)
   
     // ============================================================
     // Global Neural Particle Canvas
