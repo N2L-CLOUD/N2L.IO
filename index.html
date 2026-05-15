@@ -34,26 +34,58 @@
   </nav>
 
   <main>
-    <section class="hero" id="home" style="min-height: 80vh; padding-top: 180px;">
+    <section class="hero" id="home" style="padding-top: 150px; padding-bottom: 1rem;">
       <div class="hero-bg">
         <img src="./Upscaled Website Images/Hero Images/enhanced_N2L_homepage_hero_image.png" alt="N2L Abstract Neural Network Hero Background">
       </div>
       <div class="hero-content">
         <div class="hero-eyebrow">Neural Net Labs</div>
-        <h1 class="hero-headline" style="color: white;">The Fourth Industrial Revolution<br>Needs a <span class="accent">Map</span></h1>
-        <p class="hero-tagline" style="color: white; font-weight: 400;">Media platforms, spatial systems, and agentic products &mdash; built to turn emerging technology into understanding, capability, and real-world execution.</p>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar" id="stats">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-number" data-target="3" data-static="true">0</span>
+              <span class="stat-label">Active Labs</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="6">0</span>
+              <span class="stat-label">Live Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="12">0</span>
+              <span class="stat-label">World Models</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="1" data-static="true">0</span>
+              <span class="stat-label">Unified Platform</span>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="hero-headline"><span style="color: #ffffff;">The Fourth Industrial Revolution</span><br><span class="accent">needs a map</span></h1>
+        <p class="hero-tagline" style="font-weight: 400;"><span style="color: #ffffff;">Media platforms, spatial systems, and agentic products &mdash; built to </span><span class="accent">turn emerging technology into understanding, capability, and real-</span><span style="color: #ffffff;">world execution.</span></p>
         
       </div>
+
     </section>
-    <section class="mission-section" id="mission">
+
+    <section class="mission-section" id="mission" style="width: 95%; max-width: var(--content-wide); padding-left: var(--space-8); padding-right: var(--space-8);">
       <div class="section-eyebrow">The Mission</div>
-      <h2 class="mission-statement" style="color: white;">Neural Net Labs maps the connective tissue<br>across the domains powering<br><span class="accent">the Fourth Industrial Revolution.</span></h2>
+      <h2 class="mission-statement" style="color: white; font-size: var(--text-lg); font-weight: 400; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.6;">Neural Net Labs maps the connective tissue across the domains powering <span class="accent">the Fourth Industrial Revolution.</span></h2>
+      <div class="domain-ticker">
+        <p class="domain-ticker-label">Currently Mapping</p>
+        <div class="domain-ticker-display">
+          <span class="domain-ticker-arrow">›</span>
+          <span id="domain-text">&nbsp;</span>
+        </div>
+      </div>
     </section>
 
 
     <section class="section" id="labs">
       <div class="section-eyebrow">Our Labs</div>
-      <p style="text-align: center; color: var(--color-text-muted); max-width: 600px; margin: 0 auto var(--space-8) auto; font-size: var(--text-lg); line-height: 1.6;">Three labs translating frontier AI into media intelligence, spatial understanding, and agentic systems.</p>
+      <p style="text-align: center; color: #ffffff; max-width: 1000px; margin: 0 auto var(--space-8) auto; font-size: var(--text-base); line-height: 1.6;">Three labs translating frontier AI into media intelligence, spatial understanding, and agentic systems.<br>Each built to operate at the frontier.</p>
       <div class="lab-card-grid">
         <a href="media-lab.html" class="lab-card media">
           <div class="lab-card-icon media">
@@ -62,6 +94,10 @@
           <p class="lab-card-title media">Media Lab</p>
           <p class="lab-card-desc">Delivers structured intelligence on the technologies, companies, and breakthroughs driving the Fourth Industrial Revolution.</p>
           <span class="lab-enter media">Enter Lab &rarr;</span>
+          <div class="live-status" style="margin-top:var(--space-4);">
+            <span class="live-dot"></span>
+            <span class="live-label">Active</span>
+          </div>
         </a>
         <a href="spatial-lab.html" class="lab-card spatial">
           <div class="lab-card-icon spatial">
@@ -70,6 +106,10 @@
           <p class="lab-card-title spatial">Spatial Intelligence Lab</p>
           <p class="lab-card-desc">Transforms raw satellite, orbital, and spatial data into models, environments, and actionable signal.</p>
           <span class="lab-enter spatial">Enter Lab &rarr;</span>
+          <div class="live-status" style="margin-top:var(--space-4);">
+            <span class="live-dot"></span>
+            <span class="live-label">Active</span>
+          </div>
         </a>
         <a href="applied-intelligence-lab.html" class="lab-card product">
           <div class="lab-card-icon product">
@@ -78,6 +118,10 @@
           <p class="lab-card-title product">Applied Intelligence Lab</p>
           <p class="lab-card-desc">Engineers AI-native, agentic products and systems to execute on complex real-world problems.</p>
           <span class="lab-enter product">Enter Lab &rarr;</span>
+          <div class="live-status" style="margin-top:var(--space-4);">
+            <span class="live-dot"></span>
+            <span class="live-label">Active</span>
+          </div>
         </a>
       </div>
     </section>
@@ -153,9 +197,8 @@
     ============================================================ -->
     <section class="section" style="overflow:hidden" id="atlas">
       <div style="text-align:center;margin-bottom:var(--space-8)">
-        <div class="section-eyebrow">Spatial Intelligence Lab</div>
         <h2 class="mission-statement" style="margin-bottom:var(--space-2)">ATLAS <span class="accent">World Models</span></h2>
-        <p class="project-desc" style="max-width:600px;margin:0 auto">Mapping the universe from cosmic phenomena to tidal disruption events.</p>
+        <p class="project-desc" style="max-width:800px;margin:0 auto">From orbital systems to deep-space phenomena, N2L is building interactive world models for exploration and spatial understanding.</p>
       </div>
       <div class="marquee-container">
         <div class="marquee-track">
@@ -214,6 +257,335 @@
   </footer>
 
   <script>
+    // ============================================================
+    // Typewriter Effect — "needs a map"
+    // ============================================================
+    (function() {
+      var accentEl = document.querySelector('.hero-headline .accent');
+      if (!accentEl) return;
+
+      var fullText = 'needs a map';
+      var TYPE_SPEED   = 120;  // ms per character typing
+      var ERASE_SPEED  = 50;   // ms per character erasing
+      var HOLD_TYPED   = 3500; // ms to hold the full text
+      var HOLD_ERASED  = 800;  // ms pause before retyping
+
+      // Inject blink keyframe
+      var s = document.createElement('style');
+      s.textContent = '@keyframes tw-blink{0%,100%{opacity:1}50%{opacity:0}}';
+      document.head.appendChild(s);
+
+      // Gradient cursor element (sibling to accent, inside h1)
+      var cursor = document.createElement('span');
+      cursor.style.cssText = [
+        'display:inline-block',
+        'width:3px',
+        'height:0.75em',
+        'background:linear-gradient(135deg,#4FD1FF,#C23BFF)',
+        'margin-left:4px',
+        'vertical-align:middle',
+        'border-radius:2px',
+        'animation:tw-blink 0.7s ease-in-out infinite'
+      ].join(';');
+      accentEl.insertAdjacentElement('afterend', cursor);
+
+      // Start empty
+      accentEl.textContent = '';
+
+      function typeText(done) {
+        var i = 0;
+        var t = setInterval(function() {
+          accentEl.textContent = fullText.slice(0, ++i);
+          if (i >= fullText.length) { clearInterval(t); setTimeout(done, HOLD_TYPED); }
+        }, TYPE_SPEED);
+      }
+
+      function eraseText(done) {
+        var i = fullText.length;
+        var t = setInterval(function() {
+          accentEl.textContent = fullText.slice(0, --i);
+          if (i <= 0) { clearInterval(t); setTimeout(done, HOLD_ERASED); }
+        }, ERASE_SPEED);
+      }
+
+      function loop() { typeText(function() { eraseText(loop); }); }
+
+      // Slight delay so page settles first
+      setTimeout(loop, 800);
+    })();
+
+    // ============================================================
+    // Animated Stats Counter — looping
+    // ============================================================
+    function animateCounterLoop(el, target) {
+      var duration = 8000;
+      function runCycle() {
+        el.textContent = '0';
+        var start = performance.now();
+        function update(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target);
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = target;
+            setTimeout(function() {
+              el.textContent = '0';
+              setTimeout(runCycle, 500);
+            }, 2500);
+          }
+        }
+        requestAnimationFrame(update);
+      }
+      runCycle();
+    }
+    // One-shot counter (for static values that stay)
+    function animateCounterOnce(el, target) {
+      var duration = 8000;
+      var start = performance.now();
+      function update(now) {
+        var elapsed = now - start;
+        var progress = Math.min(elapsed / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(update);
+    }
+
+    var statsObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.stat-number').forEach(function(el) {
+            if (el.dataset.static === 'true') {
+              animateCounterOnce(el, parseInt(el.dataset.target));
+            } else {
+              animateCounterLoop(el, parseInt(el.dataset.target));
+            }
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    var statsEl = document.getElementById('stats');
+    if (statsEl) statsObserver.observe(statsEl);
+
+    // ============================================================
+    // Scroll-Triggered Section Reveals
+    // ============================================================
+    (function() {
+      // Elements to reveal (excluding hero which is above the fold)
+      var revealTargets = [
+        '#mission .section-eyebrow',
+        '#mission .mission-statement',
+        '#labs .section-eyebrow',
+        '#labs > p',
+        '.lab-card',
+        '#projects .section-eyebrow',
+        '.project-card',
+        '#atlas .section-eyebrow',
+        '#atlas h2',
+        '#atlas .project-desc',
+        '#atlas .btn-primary',
+        'footer .footer-logo',
+        'footer .footer-links',
+        'footer .footer-legal'
+      ];
+
+      revealTargets.forEach(function(selector) {
+        document.querySelectorAll(selector).forEach(function(el) {
+          el.classList.add('reveal');
+        });
+      });
+
+      // Stagger cards
+      document.querySelectorAll('.lab-card').forEach(function(el, i) {
+        el.style.transitionDelay = (i * 0.4) + 's';
+      });
+      document.querySelectorAll('.project-card').forEach(function(el, i) {
+        el.style.transitionDelay = (i * 0.32) + 's';
+      });
+
+      var revealObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            // Clear stagger delay after reveal finishes so hover is instant
+            var delay = parseFloat(entry.target.style.transitionDelay) || 0;
+            setTimeout(function() {
+              entry.target.style.transitionDelay = '0s';
+            }, (delay + 2.4) * 1000);
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function(el) {
+        revealObs.observe(el);
+      });
+    })();
+
+    // ============================================================
+    // Eyebrow Pill — Click to Center Section
+    // ============================================================
+    document.querySelectorAll('.section-eyebrow, .hero-eyebrow').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        var section = pill.closest('section') || pill.closest('[id]');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ============================================================
+    // Gradient Glow Cursor Trail
+    // ============================================================
+    (function() {
+      if (window.matchMedia('(pointer: coarse)').matches) return; // skip touch
+
+      // Main glow orb
+      var orb = document.createElement('div');
+      orb.style.cssText = [
+        'position:fixed','top:0','left:0','width:28px','height:28px',
+        'border-radius:50%',
+        'background:radial-gradient(circle,rgba(79,209,255,0.55) 0%,rgba(194,59,255,0.25) 60%,transparent 100%)',
+        'pointer-events:none','z-index:9999',
+        'transform:translate(-50%,-50%)',
+        'filter:blur(4px)',
+        'transition:opacity 0.3s ease',
+        'opacity:0'
+      ].join(';');
+      document.body.appendChild(orb);
+
+      var mouseX = 0, mouseY = 0, orbX = 0, orbY = 0, visible = false;
+
+      document.addEventListener('mousemove', function(e) {
+        mouseX = e.clientX; mouseY = e.clientY;
+        if (!visible) { orb.style.opacity = '1'; visible = true; }
+        spawnDot(e.clientX, e.clientY);
+      });
+      document.addEventListener('mouseleave', function() {
+        orb.style.opacity = '0'; visible = false;
+      });
+
+      // Smooth lerp follow
+      function lerp(a, b, t) { return a + (b - a) * t; }
+      (function animateOrb() {
+        orbX = lerp(orbX, mouseX, 0.1);
+        orbY = lerp(orbY, mouseY, 0.1);
+        orb.style.left = orbX + 'px';
+        orb.style.top  = orbY + 'px';
+        requestAnimationFrame(animateOrb);
+      })();
+
+      // Trail dots
+      var lastDot = 0;
+      function spawnDot(x, y) {
+        var now = Date.now();
+        if (now - lastDot < 30) return;
+        lastDot = now;
+        var d = document.createElement('div');
+        d.style.cssText = [
+          'position:fixed','pointer-events:none','z-index:9998',
+          'border-radius:50%','width:10px','height:10px',
+          'transform:translate(-50%,-50%) scale(1)',
+          'background:radial-gradient(circle,rgba(79,209,255,0.7) 0%,rgba(194,59,255,0.4) 100%)',
+          'filter:blur(2px)',
+          'left:'+x+'px','top:'+y+'px',
+          'transition:opacity 0.6s ease,transform 0.6s ease',
+          'opacity:0.8'
+        ].join(';');
+        document.body.appendChild(d);
+        requestAnimationFrame(function() {
+          d.style.opacity = '0';
+          d.style.transform = 'translate(-50%,-50%) scale(0.3)';
+        });
+        setTimeout(function() { d.remove(); }, 650);
+      }
+    })();
+
+    // ============================================================
+    // Domain Flip Ticker — Solari Board Scramble
+    // ============================================================
+    (function() {
+      var el = document.getElementById('domain-text');
+      if (!el) return;
+
+      var domains = [
+        'AI & Machine Learning',
+        'Robotics & Automation',
+        'Quantum Computing',
+        'Energy Fusion',
+        'Nanotechnology',
+        'Systems Governance',
+        'Post-Labor Economics'
+      ];
+
+      var glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@&%▓█▒';
+      var currentIndex = 0;
+      var running = false;
+
+      function scramble(target, done) {
+        var len = target.length;
+        var resolved = new Array(len).fill(false);
+        var chars = target.split('');
+        var DURATION = 950;
+        var start = null;
+
+        function tick(ts) {
+          if (!start) start = ts;
+          var elapsed = ts - start;
+          var progress = Math.min(elapsed / DURATION, 1);
+          // Resolve chars left-to-right based on progress
+          var resolveUpTo = Math.floor(progress * len);
+
+          for (var i = 0; i < len; i++) {
+            if (i < resolveUpTo) {
+              chars[i] = target[i];
+              resolved[i] = true;
+            } else if (!resolved[i]) {
+              chars[i] = target[i] === ' ' ? ' ' : glyphs[Math.floor(Math.random() * glyphs.length)];
+            }
+          }
+
+          el.textContent = chars.join('');
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            el.textContent = target;
+            done && done();
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+
+      function cycle() {
+        scramble(domains[currentIndex], function() {
+          currentIndex = (currentIndex + 1) % domains.length;
+          setTimeout(cycle, 2800);
+        });
+      }
+
+      // Start when mission section enters viewport
+      var missionEl = document.getElementById('mission');
+      if (missionEl) {
+        var tickerObs = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting && !running) {
+            running = true;
+            setTimeout(cycle, 400);
+            tickerObs.disconnect();
+          }
+        }, { threshold: 0.3 });
+        tickerObs.observe(missionEl);
+      }
+    })();
+
     const nav = document.getElementById('site-nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
@@ -287,13 +659,13 @@
       resize();
 
       const particles = [];
-      for (let i = 0; i < 160; i++) {
+      for (let i = 0; i < 240; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
           vx: (Math.random() - 0.5) * 0.6,
           vy: (Math.random() - 0.5) * 0.6,
-          radius: Math.random() * 1.875 + 0.625
+          radius: Math.random() * 2.8 + 0.9
         });
       }
 
@@ -309,7 +681,7 @@
 
       function draw() {
         ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = 'rgba(79, 209, 255, 0.9)';
+        ctx.fillStyle = 'rgba(79, 209, 255, 1.0)';
         
         particles.forEach((p, i) => {
           p.x += p.vx;
@@ -324,9 +696,9 @@
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx*dx + dy*dy);
-          if (dist < 200) {
+          if (dist < 300) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(79, 209, 255, ${1.0 - dist/200})`;
+            ctx.strokeStyle = `rgba(79, 209, 255, ${1.0 - dist/300})`;
             ctx.lineWidth = 1;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
@@ -338,9 +710,9 @@
             const dx2 = p.x - p2.x;
             const dy2 = p.y - p2.y;
             const dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
-            if(dist2 < 100) {
+            if(dist2 < 150) {
               ctx.beginPath();
-              ctx.strokeStyle = `rgba(79, 209, 255, ${0.45 - dist2/333})`;
+              ctx.strokeStyle = `rgba(79, 209, 255, ${0.68 - dist2/222})`;
               ctx.lineWidth = 0.5;
               ctx.moveTo(p.x, p.y);
               ctx.lineTo(p2.x, p2.y);
