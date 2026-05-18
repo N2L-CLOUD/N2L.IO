@@ -73,15 +73,15 @@
             <span class="stat-label">Projects</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number stat-amber" data-target="2" data-static="true">0</span>
+            <span class="stat-number stat-amber" data-target="0" data-static="true">0</span>
             <span class="stat-label">Live</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number stat-amber" data-target="0" data-static="true">0</span>
-            <span class="stat-label">Pending</span>
+            <span class="stat-number stat-amber" data-target="2" data-static="true">0</span>
+            <span class="stat-label">In Development</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number stat-amber" data-target="480">0</span>
+            <span class="stat-number stat-amber" data-target="500" data-random="true">0</span>
             <span class="stat-label">Agents Active</span>
           </div>
         </div>
@@ -101,7 +101,8 @@
           <div class="project-info">
             <h3 class="project-title">Anubis Agentic Research</h3>
             <p class="project-desc">Agentic research framework where AI agents modeled on the greatest scientific minds of the 20th and 21st centuries collaborate to solve complex cross-domain problems.</p>
-            <div class="live-status" style="align-self:center;">&#9679; LIVE</div>
+            <span class="project-explore amber">EXPLORE &rarr;</span>
+
           </div>
         </a>
         <a href="vectorscope.html" class="project-card sub-page-card">
@@ -111,7 +112,8 @@
           <div class="project-info">
             <h3 class="project-title">VectorScope Cyber</h3>
             <p class="project-desc">Agentic cyber platform that uses AI to monitor AI, surfacing emerging attacks worldwide and recommended responses in real time.</p>
-            <div class="live-status" style="align-self:center;">&#9679; LIVE</div>
+            <span class="project-explore amber">EXPLORE &rarr;</span>
+
           </div>
         </a>
       </div>
@@ -150,12 +152,44 @@
         }
         requestAnimationFrame(step);
       }
+      function animateRandom(el, initial) {
+        // Phase 1: count up to initial value
+        var current = 0, start = null, dur = 1600;
+        function countUp(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          current = Math.floor((1 - Math.pow(1 - p, 3)) * initial);
+          el.textContent = current.toLocaleString();
+          if (p < 1) { requestAnimationFrame(countUp); }
+          else { current = initial; el.textContent = current.toLocaleString(); setTimeout(fluctuate, 800); }
+        }
+        requestAnimationFrame(countUp);
+        // Phase 2: random fluctuation between 400-1000
+        function fluctuate() {
+          var nextTarget = Math.floor(Math.random() * 601) + 400;
+          var fromVal = current;
+          var moveDur = 900 + Math.random() * 1200;
+          var s = null;
+          function step(ts) {
+            if (!s) s = ts;
+            var p = Math.min((ts - s) / moveDur, 1);
+            var ease = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
+            current = Math.round(fromVal + (nextTarget - fromVal) * ease);
+            el.textContent = current.toLocaleString();
+            if (p < 1) { requestAnimationFrame(step); }
+            else { current = nextTarget; setTimeout(fluctuate, 400 + Math.random() * 1000); }
+          }
+          requestAnimationFrame(step);
+        }
+      }
       window.addEventListener('load', function() {
         setTimeout(function() {
           var statsEl = document.getElementById('stats');
           if (!statsEl) return;
           statsEl.querySelectorAll('.stat-number').forEach(function(el) {
-            el.dataset.static === 'true' ? animateOnce(el, +el.dataset.target) : animateLoop(el, +el.dataset.target);
+            if (el.dataset.random === 'true') animateRandom(el, +el.dataset.target);
+            else if (el.dataset.static === 'true') animateOnce(el, +el.dataset.target);
+            else animateLoop(el, +el.dataset.target);
           });
         }, 400);
       });

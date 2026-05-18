@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root{--timer-color:255,181,71;}
+  </style>
 </head>
 <body>
   <nav class="site-nav nav-amber" id="site-nav">
@@ -34,12 +37,32 @@
         <h1 class="hero-headline" style="color:var(--color-amber);">Anubis Agentic Research</h1>
       </div>
     </section>
-    
-    <section class="section sub-projects-section" style="max-width:800px; margin:0 auto; padding-top:var(--space-12) !important;">
-      <div class="section-eyebrow" style="text-align:left;font-size:var(--text-sm);margin-bottom:var(--space-4);color:var(--color-amber);">Project Overview</div>
+
+    <section class="section launch-timer-section" id="launch">
+      <div class="timer-eyebrow">LAUNCHING IN</div>
+      <div class="countdown-grid">
+        <div class="countdown-block"><span class="countdown-digits" id="cd-days">00</span><span class="countdown-unit">DAYS</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-digits" id="cd-hours">00</span><span class="countdown-unit">HRS</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-digits" id="cd-mins">00</span><span class="countdown-unit">MINS</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-digits" id="cd-secs">00</span><span class="countdown-unit">SECS</span></div>
+      </div>
+      <div class="waitlist-card">
+        <a href="#" class="btn btn-primary glow-btn waitlist-btn">Join the Waitlist &nearr;</a>
+        <p class="waitlist-subline">Get early access to the agentic research framework before it opens to the public.</p>
+      </div>
+    </section>
+
+    <section class="section sub-projects-section" style="padding-top:var(--space-12) !important; text-align:center; margin:0 auto;">
+      <div class="section-eyebrow" style="font-size:var(--text-sm);margin-bottom:var(--space-4);color:var(--color-amber);">Project Overview</div>
       <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-6);color:var(--color-text);">Deep dive into Anubis Agentic Research</h2>
+      <p style="color:var(--color-text-muted);line-height:1.8;font-size:var(--text-lg);margin-bottom:var(--space-6);text-align:center;">
+        Anubis is N2L's agentic research framework &mdash; a multi-agent system where each agent is modeled on the reasoning style, methodology, and domain expertise of a defining scientific mind from the 20th or 21st century. Agents don't just retrieve information. They interrogate it, challenge each other's conclusions, and synthesize findings across disciplines the way history's sharpest thinkers would have done in the same room.
+      </p>
       <p style="color:var(--color-text-muted);line-height:1.8;font-size:var(--text-lg);margin-bottom:var(--space-8);">
-        [ Placeholder text for project deep dive. This is where the extended copy, features, and technical specifications for the project will be placed. The layout is intentionally clean and readable. ]
+        The system is designed for cross-domain problems &mdash; the kind that don't yield to a single model or a single perspective. A materials science question intersects with quantum mechanics. A public health problem has roots in economics and atmospheric chemistry. Anubis assembles the right minds, runs the inquiry, and returns structured analysis built for decisions, not just reading.
       </p>
 
     </section>
@@ -69,6 +92,16 @@
       section.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
       observer.observe(section);
     });
+
+    // Countdown Timer
+    (function(){
+      var t=new Date('2026-08-16T00:00:00');
+      var f={d:document.getElementById('cd-days'),h:document.getElementById('cd-hours'),m:document.getElementById('cd-mins'),s:document.getElementById('cd-secs')};
+      function p(n){return String(Math.max(0,n)).padStart(2,'0');}
+      function upd(el,val){var v=p(val);if(el.textContent!==v){el.classList.remove('flipping');void el.offsetWidth;el.classList.add('flipping');el.textContent=v;}}
+      function tick(){var d=Math.max(0,t-Date.now());upd(f.d,Math.floor(d/86400000));upd(f.h,Math.floor(d%86400000/3600000));upd(f.m,Math.floor(d%3600000/60000));upd(f.s,Math.floor(d%60000/1000));}
+      tick();setInterval(tick,1000);
+    })();
   
     // ============================================================
     // Global Neural Particle Canvas

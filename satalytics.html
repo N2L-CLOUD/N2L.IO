@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root{--timer-color:79,209,255;}
+    @keyframes satalytics-breathe {
+      0%, 100% { opacity: 1.0;  filter: brightness(1.5); }
+      50%       { opacity: 0.55; filter: brightness(0.85); }
+    }
+    .sub-hero .hero-bg img {
+      animation: satalytics-breathe 4.2s ease-in-out infinite !important;
+      object-position: center center !important;
+      transform: scale(1.05) !important;
+    }
+  </style>
 </head>
 <body>
   <nav class="site-nav nav-cyan" id="site-nav">
@@ -26,19 +38,40 @@
   </nav>
 
   <main>
-    <section class="hero sub-hero">
+    <section class="hero sub-hero" style="align-items:center; padding-top:80px; padding-bottom:80px;">
       <div class="hero-bg">
         <img src="./Upscaled Website Images/Hero Images/enhanced_Satalytics_hero_image.png" alt="Satalytics Hero">
       </div>
-      <div class="hero-content">
+      <div class="hero-content" style="width:100%;text-align:center;">
         <h1 class="hero-headline" style="color:var(--color-cyan);">Satalytics</h1>
       </div>
     </section>
-    
-    <section class="section sub-projects-section" style="max-width:800px; margin:0 auto; padding-top:var(--space-12) !important;">
+
+    <section class="section launch-timer-section" id="launch">
+      <div class="timer-eyebrow">LAUNCHING IN</div>
+      <div class="countdown-grid">
+        <div class="countdown-block"><span class="countdown-digits" id="cd-days">00</span><span class="countdown-unit">DAYS</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-digits" id="cd-hours">00</span><span class="countdown-unit">HRS</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-digits" id="cd-mins">00</span><span class="countdown-unit">MINS</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-digits" id="cd-secs">00</span><span class="countdown-unit">SECS</span></div>
+      </div>
+      <div class="waitlist-card">
+        <a href="#" class="btn btn-primary glow-btn waitlist-btn">Join the Waitlist &nearr;</a>
+        <p class="waitlist-subline">Get notified when orbital intelligence signals go live.</p>
+      </div>
+    </section>
+
+    <section class="section sub-projects-section" style="padding-top:var(--space-12) !important; text-align:center; margin:0 auto;">
+      <div class="section-eyebrow" style="font-size:var(--text-sm);margin-bottom:var(--space-4);color:var(--color-cyan);">Project Overview</div>
       <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-6);color:var(--color-text);">Deep dive into Satalytics</h2>
-      <p style="color:var(--color-text-muted);line-height:1.8;font-size:var(--text-lg);margin-bottom:var(--space-8);">
-        [ Placeholder text for project deep dive. This is where the extended copy, features, and technical specifications for the project will be placed. The layout is intentionally clean and readable. ]
+      <p style="color:var(--color-text-muted);line-height:1.8;font-size:var(--text-lg);margin-bottom:var(--space-6);text-align:center;">
+        Satalytics is N2L&rsquo;s orbital intelligence engine &mdash; a data pipeline that ingests raw satellite data and runs it through frontier neural networks to extract structured, actionable signals. Where most satellite platforms stop at imagery or telemetry, Satalytics goes further: turning the continuous stream of orbital data into intelligence outputs that can inform decisions, track change, and surface patterns invisible to conventional analysis.
+      </p>
+      <p style="color:var(--color-text-muted);line-height:1.8;font-size:var(--text-lg);margin-bottom:var(--space-8);text-align:center;">
+        The system is built for analysts, researchers, and organizations that need to move from raw data to meaning &mdash; fast. Satalytics handles the transformation layer between what satellites observe and what humans can actually act on, converting the noise of orbital feeds into clean, structured signal at scale.
       </p>
     </section>
   </main>
@@ -67,6 +100,16 @@
       section.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
       observer.observe(section);
     });
+
+    // Countdown Timer
+    (function(){
+      var t=new Date('2026-07-17T00:00:00');
+      var f={d:document.getElementById('cd-days'),h:document.getElementById('cd-hours'),m:document.getElementById('cd-mins'),s:document.getElementById('cd-secs')};
+      function p(n){return String(Math.max(0,n)).padStart(2,'0');}
+      function upd(el,val){var v=p(val);if(el.textContent!==v){el.classList.remove('flipping');void el.offsetWidth;el.classList.add('flipping');el.textContent=v;}}
+      function tick(){var d=Math.max(0,t-Date.now());upd(f.d,Math.floor(d/86400000));upd(f.h,Math.floor(d%86400000/3600000));upd(f.m,Math.floor(d%3600000/60000));upd(f.s,Math.floor(d%60000/1000));}
+      tick();setInterval(tick,1000);
+    })();
   
     // ============================================================
     // Global Neural Particle Canvas

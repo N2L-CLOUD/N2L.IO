@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root{--timer-color:79,209,255;}
+    /* Orbitarium — brighter hero: filter:brightness pushes past opacity 1.0 ceiling */
+    @keyframes orbitarium-breathe {
+      0%, 100% { opacity: 1.0;  filter: brightness(1.5); }
+      50%       { opacity: 0.55; filter: brightness(0.85); }
+    }
+    .sub-hero .hero-bg img {
+      animation: orbitarium-breathe 4.2s ease-in-out infinite !important;
+      object-position: center top !important;
+      transform: scale(1.05) !important;
+    }
+  </style>
 </head>
 <body>
   <nav class="site-nav nav-cyan" id="site-nav">
@@ -34,14 +47,33 @@
         <h1 class="hero-headline" style="color:var(--color-cyan);">Orbitarium</h1>
       </div>
     </section>
-    
-    <section class="section sub-projects-section" style="max-width:800px; margin:0 auto; padding-top:var(--space-12) !important;">
-      <div class="section-eyebrow" style="text-align:left;font-size:var(--text-sm);margin-bottom:var(--space-4);">Project Overview</div>
-      <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-6);color:var(--color-text);">Deep dive into Orbitarium</h2>
-      <p style="color:var(--color-text-muted);line-height:1.8;font-size:var(--text-lg);margin-bottom:var(--space-8);">
-        [ Placeholder text for project deep dive. This is where the extended copy, features, and technical specifications for the project will be placed. The layout is intentionally clean and readable. ]
-      </p>
 
+    <section class="section launch-timer-section" id="launch">
+      <div class="timer-eyebrow">LAUNCHING IN</div>
+      <div class="countdown-grid">
+        <div class="countdown-block"><span class="countdown-digits" id="cd-days">00</span><span class="countdown-unit">DAYS</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-digits" id="cd-hours">00</span><span class="countdown-unit">HRS</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-digits" id="cd-mins">00</span><span class="countdown-unit">MINS</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-digits" id="cd-secs">00</span><span class="countdown-unit">SECS</span></div>
+      </div>
+      <div class="waitlist-card">
+        <a href="#" class="btn btn-primary glow-btn waitlist-btn">Join the Waitlist &nearr;</a>
+        <p class="waitlist-subline">Be among the first to navigate N2L's real-time interactive model of our solar system.</p>
+      </div>
+    </section>
+
+    <section class="section sub-projects-section" style="padding-top:var(--space-12) !important; text-align:center; margin:0 auto;">
+      <div class="section-eyebrow" style="font-size:var(--text-sm);margin-bottom:var(--space-4);color:var(--color-cyan);">Project Overview</div>
+      <h2 style="font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-6);color:var(--color-text);">Deep dive into Orbitarium</h2>
+      <p style="color:var(--color-text-muted);line-height:1.8;font-size:var(--text-lg);margin-bottom:var(--space-6);text-align:center;">
+        Orbitarium is N2L&rsquo;s real-time interactive world model of our solar system &mdash; a spatially accurate, navigable environment built from the Sun out to the Kuiper Belt. Every object, orbit, and positional relationship is rendered from live data, giving users a working model of the solar system as it actually exists at any given moment, not a static diagram or an approximation.
+      </p>
+      <p style="color:var(--color-text-muted);line-height:1.8;font-size:var(--text-lg);margin-bottom:var(--space-8);">
+        The system is designed for exploration, education, and spatial reasoning at scale. Whether tracing the orbital mechanics of a specific body, visualizing the geometry between planets across a time window, or simply navigating the outer system to understand what&rsquo;s out there, Orbitarium turns the complexity of our solar system into something you can move through and interrogate directly.
+      </p>
     </section>
   </main>
 
@@ -69,6 +101,16 @@
       section.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
       observer.observe(section);
     });
+
+    // Countdown Timer
+    (function(){
+      var t=new Date('2026-09-15T00:00:00');
+      var f={d:document.getElementById('cd-days'),h:document.getElementById('cd-hours'),m:document.getElementById('cd-mins'),s:document.getElementById('cd-secs')};
+      function p(n){return String(Math.max(0,n)).padStart(2,'0');}
+      function upd(el,val){var v=p(val);if(el.textContent!==v){el.classList.remove('flipping');void el.offsetWidth;el.classList.add('flipping');el.textContent=v;}}
+      function tick(){var d=Math.max(0,t-Date.now());upd(f.d,Math.floor(d/86400000));upd(f.h,Math.floor(d%86400000/3600000));upd(f.m,Math.floor(d%3600000/60000));upd(f.s,Math.floor(d%60000/1000));}
+      tick();setInterval(tick,1000);
+    })();
   
     // ============================================================
     // Global Neural Particle Canvas
