@@ -11,13 +11,33 @@
   <style>
     :root{--timer-color:79,209,255;}
     @keyframes satalytics-breathe {
-      0%, 100% { opacity: 1.0;  filter: brightness(1.5); }
-      50%       { opacity: 0.55; filter: brightness(0.85); }
+      0%, 100% { opacity: 0.9;  filter: brightness(1.1); }
+      50%       { opacity: 0.65; filter: brightness(0.95); }
     }
     .sub-hero .hero-bg img {
       animation: satalytics-breathe 4.2s ease-in-out infinite !important;
+      object-fit: contain !important;
       object-position: center center !important;
-      transform: scale(1.05) !important;
+      transform: scale(1) translateX(0) !important;
+      mask-image:
+        linear-gradient(to bottom, black 70%, transparent 100%),
+        linear-gradient(to top, black 85%, transparent 100%),
+        linear-gradient(to left, black 45%, transparent 100%),
+        linear-gradient(to right, black 45%, transparent 100%) !important;
+      mask-composite: intersect !important;
+      -webkit-mask-image:
+        linear-gradient(to bottom, black 70%, transparent 100%),
+        linear-gradient(to top, black 85%, transparent 100%),
+        linear-gradient(to left, black 45%, transparent 100%),
+        linear-gradient(to right, black 45%, transparent 100%) !important;
+      -webkit-mask-composite: source-in !important;
+    }
+    .sub-hero .hero-bg {
+      top: 90px !important;
+      height: calc(100% - 90px) !important;
+    }
+    .sub-hero .hero-bg::after {
+      background: none !important;
     }
   </style>
 </head>
@@ -38,11 +58,11 @@
   </nav>
 
   <main>
-    <section class="hero sub-hero" style="align-items:center; padding-top:80px; padding-bottom:80px;">
+    <section class="hero sub-hero" style="align-items:center; padding-top:140px; padding-bottom:360px;">
       <div class="hero-bg">
         <img src="./Upscaled Website Images/Hero Images/enhanced_Satalytics_hero_image.png" alt="Satalytics Hero">
       </div>
-      <div class="hero-content" style="width:100%">
+      <div class="hero-content" style="width:100%; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:10;">
         <h1 class="hero-headline" style="color:var(--color-cyan);">Satalytics</h1>
       </div>
     </section>
