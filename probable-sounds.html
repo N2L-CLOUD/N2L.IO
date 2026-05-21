@@ -79,8 +79,16 @@
         <div class="countdown-block"><span class="countdown-digits" id="cd-secs">00</span><span class="countdown-unit">SECS</span></div>
       </div>
       <div class="waitlist-card">
-        <a href="#" class="btn btn-primary glow-btn waitlist-btn">Join the Waitlist &nearr;</a>
+        <form class="waitlist-form" action="https://formspree.io/f/mdajggao" method="POST" style="display:flex; gap:var(--space-3); justify-content:center; flex-wrap:wrap;">
+          <input type="hidden" name="project" value="Probable Sounds">
+          <input type="email" name="email" placeholder="Enter your email" required
+            style="padding: var(--space-3) var(--space-4); background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); color: var(--color-text); font-family: var(--font-body); font-size: var(--text-sm); outline: none; min-width: 240px; transition: border-color 0.3s ease;"
+            onfocus="this.style.borderColor='rgba(194,59,255,0.6)'" onblur="this.style.borderColor=''"
+          />
+          <button type="submit" class="btn btn-primary glow-btn waitlist-btn" style="border:none; cursor:pointer;">Join the Waitlist &nearr;</button>
+        </form>
         <p class="waitlist-subline">Be the first inside when the project goes live.</p>
+        <p class="waitlist-success" style="display:none; color: var(--color-magenta); font-size: var(--text-sm); margin-top: var(--space-2);">You&rsquo;re on the list! We&rsquo;ll be in touch.</p>
       </div>
     </section>
 
@@ -245,6 +253,7 @@
       <p class="footer-copy" style="color:var(--color-text-muted); font-size:var(--text-sm); margin-top:var(--space-2);">&copy; 2026 Neural Net Labs &mdash; N2L.io &mdash; Applied AI Innovation</p>
     </div>
   </footer>
+  <script src="waitlist.js"></script>
   <script src="mobile.js"></script>
 </body>
 </html>

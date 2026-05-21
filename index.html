@@ -38,7 +38,7 @@
         <img src="./Upscaled Website Images/Hero Images/enhanced_N2L_homepage_hero_image.png" alt="N2L Abstract Neural Network Hero Background">
       </div>
       <div class="hero-content">
-        <div class="hero-eyebrow">Neural Net Labs</div>
+        <a href="#labs" class="hero-eyebrow" style="text-decoration:none; color:inherit;">Neural Net Labs</a>
 
         <!-- Stats Bar -->
         <div class="stats-bar" id="stats">
@@ -254,7 +254,25 @@
       <div class="section-eyebrow">Contact</div>
       <h2 class="mission-statement" style="color: white; font-size: var(--text-lg); font-weight: 400; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">Let&rsquo;s build the future <span class="accent">together.</span></h2>
       <p style="color: var(--color-text-muted); font-size: var(--text-sm); max-width: 520px; margin: 0 auto var(--space-8); line-height: 1.7;">Interested in partnering, investing, or collaborating? Reach out directly.</p>
-      <a href="mailto:herb@n2l.io" class="btn btn-primary glow-btn" style="font-size: var(--text-sm);">herb@n2l.io &nearr;</a>
+
+      <!-- Contact Form -->
+      <form id="contact-form" action="https://formspree.io/f/mvzyaagl" method="POST" style="max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-4);">
+        <input type="text" name="name" placeholder="Your Name" required
+          style="padding: var(--space-3) var(--space-4); background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); color: var(--color-text); font-family: var(--font-body); font-size: var(--text-sm); outline: none; transition: border-color 0.3s ease;"
+          onfocus="this.style.borderColor='rgba(79,209,255,0.6)'" onblur="this.style.borderColor=''"
+        />
+        <input type="email" name="email" placeholder="Your Email" required
+          style="padding: var(--space-3) var(--space-4); background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); color: var(--color-text); font-family: var(--font-body); font-size: var(--text-sm); outline: none; transition: border-color 0.3s ease;"
+          onfocus="this.style.borderColor='rgba(79,209,255,0.6)'" onblur="this.style.borderColor=''"
+        />
+        <textarea name="message" placeholder="Your Message" rows="4" required
+          style="padding: var(--space-3) var(--space-4); background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md); color: var(--color-text); font-family: var(--font-body); font-size: var(--text-sm); outline: none; resize: vertical; transition: border-color 0.3s ease;"
+          onfocus="this.style.borderColor='rgba(79,209,255,0.6)'" onblur="this.style.borderColor=''"
+        ></textarea>
+        <button type="submit" class="btn btn-primary glow-btn" style="font-size: var(--text-sm); cursor: pointer; border: none;">Send Message &nearr;</button>
+      </form>
+      <p id="contact-success" style="display:none; color: var(--color-cyan); font-size: var(--text-sm); margin-top: var(--space-4);">Message sent! We&rsquo;ll be in touch.</p>
+      <p id="contact-error" style="display:none; color: #ff6b6b; font-size: var(--text-sm); margin-top: var(--space-4);">Something went wrong. Please try again.</p>
     </section>
   </main>
 
@@ -748,6 +766,40 @@
         requestAnimationFrame(draw);
       }
       draw();
+    })();
+    // ============================================================
+    // Contact Form — AJAX Submit
+    // ============================================================
+    (function() {
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        var origText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function(resp) {
+          if (resp.ok) {
+            form.reset();
+            form.style.display = 'none';
+            document.getElementById('contact-success').style.display = 'block';
+          } else {
+            document.getElementById('contact-error').style.display = 'block';
+            btn.textContent = origText;
+            btn.disabled = false;
+          }
+        }).catch(function() {
+          document.getElementById('contact-error').style.display = 'block';
+          btn.textContent = origText;
+          btn.disabled = false;
+        });
+      });
     })();
 </script>
   <script src="mobile.js"></script>
