@@ -625,6 +625,11 @@ section[id], div[id], footer[id] { scroll-margin-top: 140px; }
     display: flex !important;
     align-items: center;
   }
+  .nav-cta .btn {
+    font-size: 0.7rem;
+    padding: var(--space-2) var(--space-3);
+    white-space: nowrap;
+  }
   .hamburger { display: flex !important; order: 2; justify-self: center; }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
