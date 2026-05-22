@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /n2l-design-test.html
+
+Sitemap: https://n2l.dev/sitemap.xml

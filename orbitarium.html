@@ -20,6 +20,15 @@
       object-position: center top !important;
       transform: scale(1.05) !important;
     }
+    @media (max-width: 768px) {
+      .sub-hero .hero-bg img {
+        object-fit: contain !important;
+        object-position: center 40% !important;
+      }
+      .sub-hero {
+        min-height: 50vh;
+      }
+    }
   </style>
 </head>
 <body>
@@ -39,11 +48,11 @@
   </nav>
 
   <main>
-    <section class="hero sub-hero">
+    <section class="hero sub-hero sub-project-hero">
       <div class="hero-bg">
         <img src="./Upscaled Website Images/Hero Images/enhanced_Orbitarium_hero_image.png" alt="Orbitarium Hero">
       </div>
-      <div class="hero-content">
+      <div class="hero-content" style="width:100%;">
         <h1 class="hero-headline" style="color:var(--color-cyan);">Orbitarium</h1>
       </div>
     </section>
@@ -82,6 +91,7 @@
       <p style="color:var(--color-text-muted);line-height:1.8;font-size:var(--text-base);text-align:center;margin-bottom:var(--space-8);">
         The system is designed for exploration, education, and spatial reasoning at scale. Whether tracing the orbital mechanics of a specific body, visualizing the geometry between planets across a time window, or simply navigating the outer system to understand what&rsquo;s out there, Orbitarium turns the complexity of our solar system into something you can move through and interrogate directly.
       </p>
+      <a href="#launch" class="btn btn-primary glow-btn mobile-waitlist-cta">Join the Waitlist ↗</a>
     </section>
   </main>
 

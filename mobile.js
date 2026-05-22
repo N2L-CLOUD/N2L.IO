@@ -1,40 +1,62 @@
 /* ============================================================
    mobile.js — Hamburger Navigation
-   Injected into all pages. Handles toggle, CTA copy, outside-click close.
+   Injected into all pages. Handles toggle, outside-click close.
+   On mobile: moves dropdown OUTSIDE nav so overflow:hidden doesn't clip it.
+   On desktop: leaves nav-links in place (CSS handles visibility).
    ============================================================ */
 (function () {
+  var mobileQuery = window.matchMedia('(max-width: 768px)');
+
   function init() {
     var nav      = document.getElementById('site-nav');
     var navLinks = document.getElementById('nav-links');
     if (!nav || !navLinks) return;
 
-    /* --- Create hamburger button --- */
-    var btn = document.createElement('button');
-    btn.className = 'hamburger';
-    btn.setAttribute('aria-label', 'Toggle navigation');
-    btn.setAttribute('aria-expanded', 'false');
-    btn.innerHTML = '<span></span><span></span><span></span>';
+    /* --- Create hamburger button (only if one doesn't already exist) --- */
+    var btn = nav.querySelector('.hamburger');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.className = 'hamburger';
+      btn.setAttribute('aria-label', 'Toggle navigation');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = '<span></span><span></span><span></span>';
+      nav.appendChild(btn);
+    }
 
-    /* Insert at end of nav (after nav-cta) */
-    nav.appendChild(btn);
+    /* Track whether nav-links has been moved out of the nav */
+    var movedOut = false;
 
-    /* --- Copy nav-cta into dropdown for mobile access --- */
-    var navCta = nav.querySelector('.nav-cta a');
-    if (navCta) {
-      var mobileCtaWrap = document.createElement('div');
-      mobileCtaWrap.className = 'nav-mobile-cta';
-      mobileCtaWrap.style.cssText = 'width:100%;height:1px;background:rgba(255,255,255,0.08);margin:4px 0 12px';
-      var ctaClone = navCta.cloneNode(true);
-      ctaClone.style.cssText = 'display:inline-flex';
-      var ctaContainer = document.createElement('div');
-      ctaContainer.className = 'nav-mobile-cta';
-      ctaContainer.appendChild(ctaClone);
-      navLinks.appendChild(mobileCtaWrap);
-      navLinks.appendChild(ctaContainer);
+    function moveOut() {
+      if (!movedOut) {
+        document.body.appendChild(navLinks);
+        movedOut = true;
+      }
+    }
+
+    function moveBack() {
+      if (movedOut) {
+        /* Re-insert nav-links back into nav, before nav-cta */
+        var navCta = nav.querySelector('.nav-cta');
+        if (navCta) {
+          nav.insertBefore(navLinks, navCta);
+        } else {
+          nav.appendChild(navLinks);
+        }
+        movedOut = false;
+        closeMenu();
+      }
+    }
+
+    /* --- Position the dropdown below the nav pill --- */
+    function positionDropdown() {
+      if (!movedOut) return;
+      var rect = nav.getBoundingClientRect();
+      navLinks.style.top = (rect.bottom + 8) + 'px';
     }
 
     /* --- Toggle --- */
     function openMenu() {
+      positionDropdown();
       btn.classList.add('open');
       navLinks.classList.add('mobile-open');
       btn.setAttribute('aria-expanded', 'true');
@@ -55,15 +77,41 @@
       link.addEventListener('click', closeMenu);
     });
 
-    /* Close on outside click */
+    /* Close on outside click (check both nav and dropdown) */
     document.addEventListener('click', function (e) {
-      if (!nav.contains(e.target)) closeMenu();
+      if (!nav.contains(e.target) && !navLinks.contains(e.target)) closeMenu();
     });
 
     /* Close on Escape key */
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeMenu();
     });
+
+    /* Reposition on scroll/resize when open */
+    window.addEventListener('scroll', function () {
+      if (navLinks.classList.contains('mobile-open')) positionDropdown();
+    }, { passive: true });
+
+    /* Handle responsive breakpoint changes */
+    function handleBreakpoint(e) {
+      if (e.matches) {
+        moveOut();
+      } else {
+        moveBack();
+      }
+    }
+
+    /* Initial check */
+    if (mobileQuery.matches) {
+      moveOut();
+    }
+
+    /* Listen for breakpoint changes */
+    if (mobileQuery.addEventListener) {
+      mobileQuery.addEventListener('change', handleBreakpoint);
+    } else if (mobileQuery.addListener) {
+      mobileQuery.addListener(handleBreakpoint);
+    }
   }
 
   if (document.readyState === 'loading') {

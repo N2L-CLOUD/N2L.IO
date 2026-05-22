@@ -19,17 +19,14 @@
       <img src="./Upscaled Website Images/Logos/enhanced_N2L_primary_logo_2.png" alt="N2L Logo" class="logo-img">
     </a>
     <div class="nav-links" id="nav-links">
+      <a href="#mission" class="nav-link">Mission</a>
       <a href="#labs" class="nav-link">Our Labs</a>
       <a href="#projects" class="nav-link">Projects</a>
-      <a href="#mission" class="nav-link">Mission</a>
       
     </div>
     <div class="nav-cta" style="display: flex; align-items: center; justify-content: flex-end;">
       <a href="#contact" class="btn btn-primary glow-btn">Contact</a>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
   <main>
@@ -75,8 +72,8 @@
 
       <!-- Founder's Note -->
       <div style="text-align: center; margin-top: var(--space-6); margin-bottom: var(--space-8);">
-        <p style="font-size: var(--text-sm); color: var(--color-text-muted); font-style: italic; margin: 0 auto; max-width: 680px; line-height: 1.7;">&ldquo;This is the most exciting time in human history to be a builder. N2L is my attempt to prove it.&rdquo;</p>
-        <p style="font-size: var(--text-sm); color: var(--color-text-faint); font-style: normal; margin: var(--space-2) auto 0; text-align: center; width: fit-content;">&mdash; Herb Chiposi, Founder</p>
+        <p style="font-size: var(--text-sm); color: rgba(200, 210, 225, 0.85); font-style: italic; margin: 0 auto; max-width: 680px; line-height: 1.7;">&ldquo;This is the most exciting time in human history to be a builder. N2L is my attempt to prove it.&rdquo;</p>
+        <p style="font-size: var(--text-sm); color: rgba(152, 162, 179, 0.95); font-style: normal; margin: var(--space-2) auto 0; text-align: center; width: fit-content;">&mdash; Herb Chiposi, Founder</p>
       </div>
 
       <div class="domain-ticker">
@@ -210,7 +207,7 @@
     <section class="section" style="overflow:hidden;" id="atlas">
       <div style="text-align:center;margin-bottom:var(--space-8)">
         <h2 class="mission-statement" style="margin-bottom:var(--space-2)">ATLAS <span class="accent">World Models</span></h2>
-        <p class="project-desc" style="max-width:800px;margin:0 auto">From orbital systems to deep-space phenomena, N2L is building interactive world models for exploration and spatial understanding.</p>
+        <p class="project-desc" style="max-width:800px;margin:0 auto;color:rgba(200,210,225,0.85)">From orbital systems to deep-space phenomena, N2L is building interactive world models for exploration and spatial understanding.</p>
       </div>
       <div class="marquee-container">
         <div class="marquee-track">
@@ -279,9 +276,9 @@
     <footer class="site-footer">
     <div class="footer-content" style="display:flex; flex-direction:column; align-items:center; gap:var(--space-2);">
       <div class="footer-links" style="display:flex; gap:var(--space-6); font-family:var(--font-display); font-size:var(--text-sm); font-weight:600; letter-spacing:0.1em; text-transform:uppercase;">
+        <a href="index.html#mission" class="footer-link">Mission</a>
         <a href="index.html#labs" class="footer-link">Our Labs</a>
         <a href="index.html#projects" class="footer-link">Projects</a>
-        <a href="index.html#mission" class="footer-link">Mission</a>
         <a href="index.html#contact" class="footer-link">Contact</a>
       </div>
             <div class="social-links" style="display:flex; gap:var(--space-4); margin: var(--space-2) 0;">
@@ -694,23 +691,39 @@
       const ctx = canvas.getContext('2d');
       let width, height;
 
-      function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      }
-      window.addEventListener('resize', resize);
-      resize();
-
       const particles = [];
-      for (let i = 0; i < 240; i++) {
-        particles.push({
+      const BASE_AREA = 1920 * 1080;
+      const MAX_PARTICLES = 240;
+      const MIN_PARTICLES = 30;
+
+      function getTargetCount() {
+        const area = width * height;
+        return Math.max(MIN_PARTICLES, Math.min(MAX_PARTICLES, Math.round(MAX_PARTICLES * (area / BASE_AREA))));
+      }
+
+      function makeParticle() {
+        return {
           x: Math.random() * width,
           y: Math.random() * height,
           vx: (Math.random() - 0.5) * 0.6,
           vy: (Math.random() - 0.5) * 0.6,
           radius: Math.random() * 2.8 + 0.9
-        });
+        };
       }
+
+      function adjustParticles() {
+        const target = getTargetCount();
+        while (particles.length > target) particles.pop();
+        while (particles.length < target) particles.push(makeParticle());
+      }
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        adjustParticles();
+      }
+      window.addEventListener('resize', resize);
+      resize();
 
       let mouse = { x: -1000, y: -1000 };
       document.addEventListener('mousemove', e => {
@@ -725,6 +738,10 @@
       function draw() {
         ctx.clearRect(0, 0, width, height);
         ctx.fillStyle = 'rgba(79, 209, 255, 1.0)';
+
+        // Scale connection distance based on screen: shorter on small screens
+        const connectDist = Math.min(150, Math.max(60, 150 * (width / 1920)));
+        const mouseDist = Math.min(300, Math.max(120, 300 * (width / 1920)));
         
         particles.forEach((p, i) => {
           p.x += p.vx;
@@ -739,9 +756,9 @@
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx*dx + dy*dy);
-          if (dist < 300) {
+          if (dist < mouseDist) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(79, 209, 255, ${1.0 - dist/300})`;
+            ctx.strokeStyle = `rgba(79, 209, 255, ${1.0 - dist/mouseDist})`;
             ctx.lineWidth = 1;
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
@@ -753,9 +770,9 @@
             const dx2 = p.x - p2.x;
             const dy2 = p.y - p2.y;
             const dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
-            if(dist2 < 150) {
+            if(dist2 < connectDist) {
               ctx.beginPath();
-              ctx.strokeStyle = `rgba(79, 209, 255, ${0.68 - dist2/222})`;
+              ctx.strokeStyle = `rgba(79, 209, 255, ${0.68 - dist2/(connectDist * 1.48)})`;
               ctx.lineWidth = 0.5;
               ctx.moveTo(p.x, p.y);
               ctx.lineTo(p2.x, p2.y);
