@@ -4,7 +4,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://n2l.dev/</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,19 +12,19 @@
   <!-- Labs -->
   <url>
     <loc>https://n2l.dev/applied-intelligence-lab.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://n2l.dev/spatial-lab.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://n2l.dev/media-lab.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -32,13 +32,13 @@
   <!-- Projects — Applied Intelligence Lab -->
   <url>
     <loc>https://n2l.dev/anubis.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://n2l.dev/vectorscope.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -46,19 +46,19 @@
   <!-- Projects — Spatial Intelligence Lab -->
   <url>
     <loc>https://n2l.dev/satalytics.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://n2l.dev/orbitarium.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://n2l.dev/atlas.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -66,21 +66,27 @@
   <!-- Projects — Media Lab -->
   <url>
     <loc>https://n2l.dev/probable-sounds.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Utility Pages -->
+  <!-- Utility & About Pages -->
+  <url>
+    <loc>https://n2l.dev/about.html</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
     <loc>https://n2l.dev/join.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://n2l.dev/login.html</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
