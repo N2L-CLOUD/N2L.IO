@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About &mdash; Herb Chiposi &mdash; N2L.dev</title>
-  <meta name="description" content="Herb Chiposi is the founder of Neural Net Labs (N2L.dev) and TekBeacon — engineering agentic AI systems, media platforms, and spatial intelligence for the Fourth Industrial Revolution.">
+  <meta name="description" content="Herb Chiposi is the founder of Neural Net Labs (N2L.dev) — engineering agentic AI systems, media platforms, and spatial intelligence for the Fourth Industrial Revolution.">
   <link rel="canonical" href="https://n2l.dev/about.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
         "sameAs": [
           "https://tekbeacon.org"
         ],
-        "description": "AI researcher, founder, and builder of Neural Net Labs (N2L.dev) and TekBeacon, focused on agentic AI systems, spatial intelligence, and media platforms for the Fourth Industrial Revolution."
+        "description": "AI researcher, founder, and builder of Neural Net Labs (N2L.dev), focused on agentic AI systems, spatial intelligence, and media platforms for the Fourth Industrial Revolution."
       },
       {
         "@type": "Organization",
@@ -48,10 +48,34 @@
   </script>
 
   <style>
+    .about-hero .hero-bg img {
+      animation: about-breathe 4.5s ease-in-out infinite !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      transform: scale(1.05) translateY(-30px) !important;
+      mask-image:
+        linear-gradient(to bottom, black 50%, transparent 100%),
+        linear-gradient(to top, black 85%, transparent 100%),
+        linear-gradient(to left, black 30%, transparent 100%),
+        linear-gradient(to right, black 30%, transparent 100%) !important;
+      mask-composite: intersect !important;
+      -webkit-mask-image:
+        linear-gradient(to bottom, black 50%, transparent 100%),
+        linear-gradient(to top, black 85%, transparent 100%),
+        linear-gradient(to left, black 30%, transparent 100%),
+        linear-gradient(to right, black 30%, transparent 100%) !important;
+      -webkit-mask-composite: source-in !important;
+    }
+    @keyframes about-breathe {
+      0%, 100% { opacity: 0.6; filter: brightness(1.0); }
+      50%      { opacity: 0.4; filter: brightness(0.8); }
+    }
     .about-hero {
-      padding-top: 160px;
+      position: relative;
+      padding-top: 180px;
       padding-bottom: var(--space-12);
       text-align: center;
+      overflow: hidden;
     }
     .about-card {
       background: var(--color-surface);
@@ -105,11 +129,16 @@
 
   <main>
     <section class="section about-hero">
-      <div class="section-eyebrow" style="color:var(--color-cyan); border-color:rgba(79,209,255,0.3); background:rgba(79,209,255,0.08);">Founder & Mission</div>
-      <h1 class="hero-headline" style="max-width:900px; margin:0 auto var(--space-4);">Building at the Frontier of <br><span class="accent">Applied AI</span></h1>
-      <p style="color:var(--color-text-muted); font-size:var(--text-lg); max-width:680px; margin:0 auto var(--space-8); line-height:1.7;">
-        Neural Net Labs (N2L.dev) is founded by Herb Chiposi — built to turn emerging technologies into understanding, capability, and real-world execution.
-      </p>
+      <div class="hero-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+        <img src="./Upscaled Website Images/Hero Images/enhanced_N2L_homepage_hero_image.png" alt="N2L Abstract Neural Network Hero Background" style="width: 100%; height: 100%; opacity: 0.5;">
+      </div>
+      <div class="hero-content" style="position: relative; z-index: 10;">
+        <div class="section-eyebrow" style="color:var(--color-cyan); border-color:rgba(79,209,255,0.3); background:rgba(79,209,255,0.08);">Founder & Mission</div>
+        <h1 class="hero-headline" style="max-width:900px; margin:0 auto var(--space-4);">Building at the Frontier of <br><span class="accent">Applied AI</span></h1>
+        <p style="color:var(--color-text-muted); font-size:var(--text-lg); max-width:680px; margin:0 auto var(--space-8); line-height:1.7;">
+          N2L is a dedicated applied AI innovation lab — built to turn emerging technologies into understanding, capability, and real-world execution.
+        </p>
+      </div>
     </section>
 
     <section class="section" style="padding-top:0;">
@@ -117,7 +146,7 @@
         <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-4); margin-bottom:var(--space-6); border-bottom:1px solid var(--color-divider); padding-bottom:var(--space-4);">
           <div>
             <h2 style="margin:0; font-size:var(--text-2xl);">Herb Chiposi</h2>
-            <p style="margin:0; color:var(--color-cyan); font-family:var(--font-display); font-size:var(--text-sm); font-weight:600; letter-spacing:0.05em;">FOUNDER &amp; CHIEF SYSTEMS ARCHITECT — NEURAL NET LABS (N2L.DEV) &amp; TEKBEACON</p>
+            <p style="margin:0; color:var(--color-cyan); font-family:var(--font-display); font-size:var(--text-sm); font-weight:600; letter-spacing:0.05em;">FOUNDER &amp; CHIEF SYSTEMS ARCHITECT — NEURAL NET LABS (N2L.DEV)</p>
           </div>
         </div>
 
@@ -130,18 +159,18 @@
           We are living through a fundamental inflection point. The Fourth Industrial Revolution is not coming — it is here. As artificial intelligence scales across compute, spatial reasoning, and agentic workflows, the bottleneck is no longer raw intelligence, but the systems that map, translate, and execute on that intelligence.
         </p>
         <p>
-          Neural Net Labs (N2L.dev) was founded by Herb Chiposi as a dedicated applied AI innovation lab. Rather than building incremental software, N2L focuses on three core pillars:
+          Neural Net Labs (N2L.dev) was founded to solve this exact problem. Rather than building incremental software, the lab focuses on three core pillars:
         </p>
 
         <ul style="color:var(--color-text-muted); line-height:1.9; margin-bottom:var(--space-8); padding-left:var(--space-6);">
           <li><strong style="color:#fff;">Applied Intelligence Lab:</strong> Engineering autonomous, agentic platforms like <em>Anubis Agentic Research</em> (cross-domain scientific problem solving) and <em>VectorScope Cyber</em> (real-time AI threat monitoring).</li>
           <li><strong style="color:#fff;">Spatial Intelligence Lab:</strong> Converting orbital telematics, satellite feeds, and 3D astronomical mechanics into interactive world models like <em>Satalytics</em> and <em>Orbitarium</em>.</li>
-          <li><strong style="color:#fff;">Media Lab & TekBeacon:</strong> Mapping the technologies, companies, compute economics, and breakthroughs shaping our near-future reality via <em>TekBeacon</em> and AI-native creative media like <em>Probable Sounds</em>.</li>
+          <li><strong style="color:#fff;">Media Lab:</strong> Mapping the technologies, companies, compute economics, and breakthroughs shaping our near-future reality via <em>TekBeacon</em> and AI-native creative media like <em>Probable Sounds</em>.</li>
         </ul>
 
         <h2>Life's Work & Execution</h2>
         <p>
-          For Herb Chiposi, N2L is a long-term commitment to engineering foundational technology that empowers researchers, analysts, and builders. By combining agentic architecture with real-world domain models, N2L bridges the gap between frontier AI research and operational reality.
+          For Herb, N2L is a life's work — a long-term commitment to engineering foundational technology that empowers researchers, analysts, and builders. By combining agentic architecture with real-world domain models, the lab bridges the gap between frontier AI research and operational reality.
         </p>
 
         <div style="text-align:center; margin-top:var(--space-10);">
@@ -164,6 +193,114 @@
     </div>
   </footer>
 
+  <script>
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section, .about-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      observer.observe(el);
+    });
+
+    // Global Neural Particle Canvas
+    (function() {
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
+      canvas.style.zIndex = '-2';
+      canvas.style.pointerEvents = 'none';
+      document.body.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      let width, height;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const particles = [];
+      for (let i = 0; i < 160; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          radius: Math.random() * 1.875 + 0.625
+        });
+      }
+
+      let mouse = { x: -1000, y: -1000 };
+      document.addEventListener('mousemove', e => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+      document.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      });
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(79, 209, 255, 0.9)';
+        
+        particles.forEach((p, i) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+          
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fill();
+          
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 200) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(79, 209, 255, ${1.0 - dist/200})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+          }
+
+          for(let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx2 = p.x - p2.x;
+            const dy2 = p.y - p2.y;
+            const dist2 = Math.sqrt(dx2*dx2 + dy2*dy2);
+            if(dist2 < 100) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(79, 209, 255, ${0.45 - dist2/333})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
   <script src="mobile.js"></script>
 </body>
 </html>
